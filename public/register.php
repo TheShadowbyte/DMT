@@ -6,17 +6,20 @@
 			require_once("layout/header.php");
 			?>
 			<form id="register">
-			  Username:<br>
+			  Username<br>
 			  <input type="text" name="username"><br>
-			  Password:<br>
-			  <input type="text" name="password">
+			  Email<br>
+			  <input type="text" name="email"><br>
+			  Password<br>
+			  <input type="password" name="password"><br>
+			   Confirm Password<br>
+			  <input type="password" name="confirm-password"><br>
 			  <br>
-			  <input type="submit" value="Sign up">
+			  <input id="register-submit" type="submit" value="Sign Up">
 			</form>
 			<?php
 			require_once("layout/footer.php");
 		}
-
 
 	}
 
