@@ -5,18 +5,18 @@ $(document).ready(function() {
 		var password = $("#password").val();
 		var passwordConfirm = $("#confirm-password").val();
 		// Returns successful data submission message when the entered information is stored in database.
-		var dataString = 'name1='+ name + '&email1='+ email + '&password1='+ password + '&password-confirm1='+ passwordConfirm;
+		var dataString = 'name='+ name + '&email='+ email + '&password='+ password + '&password-confirm='+ passwordConfirm;
 		if (name==''||email==''||password==''||passwordConfirm=='') {
 			alert("Please fill out all fields");
 		}
 		else {
 			$.ajax({
 				type: "POST",
-				url: "../includes/ajax-submit.php",
+				url: "../../ajax-submit.php",
 				data: dataString,
 				cache: false,
 				success: function(result) {
-					alert("cool");
+					alert(window.location.href);
 				}
 			});
 		}
