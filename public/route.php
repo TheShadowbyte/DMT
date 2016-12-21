@@ -16,20 +16,21 @@
 
 		}
 
-		// Loads the classes of the matched regexps or use 404 class
+		// Loads the class of the matched URI or uses 404 class if no match
 		public function submit() {
 
 			$getURIParameters = isset($_GET['uri']) ? '/' . $_GET['uri'] : '/';
+			$match = 0;
 			foreach ($this->uri as $key => $value) {
 				if (preg_match("#^$value$#", $getURIParameters)) {
 					$useMethod = $this->method[$key];
 					new $useMethod();
+					$match = 1;
 					break;
 				}
-				else {
-					new NotFound();
-					break;
-				}
+			}
+			if ($match !== 1) {
+				new NotFound();
 			}
 
 		}
