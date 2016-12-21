@@ -1,0 +1,19 @@
+body {
+	margin: 0;
+}
+#header, #footer {
+	background: #0483a3;
+	color: white;
+	font-size: 1.2em;
+	height: 50px;
+	text-align: center;
+}
+
+#top-menu li {
+	display: inline-block;
+}
+
+#top-menu li a {
+	color: white;
+	text-decoration: none;
+}
