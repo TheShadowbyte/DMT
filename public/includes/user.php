@@ -12,9 +12,9 @@
 
 		function __construct() {
 			$this->username = $_POST['username'];
-			$this->email = $_POST['email'];
+			if (isset($_POST['email'])) { $this->email = $_POST['email']; }
 			$this->password = $_POST['password'];
-			$this->passwordConfirm = $_POST['password-confirm'];
+			if (isset($_POST['password-confirm'])) { $this->email = $_POST['password-confirm']; }
 			$this->postType = $_POST['post-type'];
 			$this->database = new Database();
 			$this->encryptedPassword = $this->passwordEncrypt();
@@ -73,11 +73,34 @@
     		}
 		}
 
+		// User login authentication
+		public function login() {
+			return crypt($this->password, $this->getPassword()) == $this->getPassword();
+		}
+
+		// Get the hashed password from the database to compare with login attempt
+		private function getPassword() {
+			$sql = "SELECT password FROM users WHERE username='$this->username' LIMIT 1";
+			return mysqli_fetch_assoc($this->database->query($sql))['password'];
+		}
+
+		public function startSession() {
+
+		}
+
 	}
 
 	$user = new User();
 	if ($user->postType == "register") {
 		$user->register();
+	}
+	elseif ($user->postType == "login") {
+		if ($user->login() == 1) {
+			echo "success";
+		}
+		else {
+			echo "failure";
+		}
 	}
 
 ?>

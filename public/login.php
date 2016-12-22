@@ -5,13 +5,13 @@
 		public function __construct() {
 			require_once("layout/header.php");
 			?>
-			<form action="" method="POST">
+			<form id="login">
 			  Username:<br>
-			  <input type="text" name="username"><br>
+			  <input id="username" type="text" name="username"><br>
 			  Password:<br>
-			  <input type="text" name="password">
+			  <input id="password" type="password" name="password">
 			  <br>
-			  <input type="submit" value="Login">
+			  <input id="login-submit" type="submit" value="Login">
 			</form>
 			<?php
 			require_once("layout/footer.php");
