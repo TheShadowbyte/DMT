@@ -7,13 +7,13 @@
 			?>
 			<form id="register">
 			  Username<br>
-			  <input type="text" name="username"><br>
+			  <input id="username" type="text" name="username"><br>
 			  Email<br>
-			  <input type="text" name="email"><br>
+			  <input id="email" type="text" name="email"><br>
 			  Password<br>
-			  <input type="password" name="password"><br>
+			  <input id="password" type="password" name="password"><br>
 			   Confirm Password<br>
-			  <input type="password" name="confirm-password"><br>
+			  <input id="confirm-password" type="password" name="confirm-password"><br>
 			  <br>
 			  <input id="register-submit" type="submit" value="Sign Up">
 			</form>
