@@ -54,5 +54,6 @@
 	}
 
 	$session = new Session();
+	$_SESSION['session_data'] = $session;
 
 ?>

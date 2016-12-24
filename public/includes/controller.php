@@ -9,7 +9,7 @@
 	}
 	elseif ($login->postType == "login") {
 		if ($login->login() == 1) {
-			$login->startSession();
+			$login->loginUser();
 			echo "success";
 		}
 		else {

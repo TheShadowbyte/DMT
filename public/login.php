@@ -39,7 +39,7 @@
 		}
 
 		// Begin session for user
-		public function startSession() {
+		public function loginUser() {
 			global $session;
 			return $session->login($this->username);
 		}

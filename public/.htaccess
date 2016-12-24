@@ -2,3 +2,4 @@ RewriteEngine On
 RewriteRule ^$ home.php [NC,L]
 RewriteRule ^register register.php [NC,L]
 RewriteRule ^login login.php [NC,L]
+RewriteRule ^profile profile.php [NC,L]

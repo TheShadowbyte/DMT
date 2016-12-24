@@ -11,6 +11,9 @@ body {
 
 #main {
 	height: 90%;
+	margin: 0 auto;
+	max-width: 1080px;
+	text-align: center;
 }
 
 #top-menu li {

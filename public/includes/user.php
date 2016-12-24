@@ -7,22 +7,11 @@
 
 		private $username;
 		private $email;
-		private $password;
-		private $passwordConfirm;
-		public  $postType;
 
-		function __construct($session) {
-			if (isset($_POST['post-type'])) { $this->postType = $_POST['post-type']; }
-			if (isset($_POST['username'])) { $this->username = $_POST['username']; }
-			if (isset($_POST['email'])) { $this->email = $_POST['email']; }
-			if (isset($_POST['password'])) {
-				$this->password = $_POST['password'];
-				if ($this->postType == "register") {
-					$this->encryptedPassword = $this->passwordEncrypt();
-				}
-			}
+		function __construct() {
+			$this->session = $_SESSION['session_data'];
+			$this->username = $this->session->username;
 			$this->database = new Database();
-			$this->session = $session;
 
 		}
 
@@ -31,8 +20,18 @@
 			return mysqli_fetch_assoc($this->database->query($sql))['username'];
 		}
 
+		public function getEmail() {
+			$sql = "SELECT email FROM users WHERE username='$this->username' LIMIT 1";
+			return mysqli_fetch_assoc($this->database->query($sql))['email'];
+		}
+
+		public function changeEmail() {
+			
+		}
+
 	}
 
-	$user = new User($session);
+	$user = new User();
+	$_SESSION['user_data'] = $user;
 
 ?>
