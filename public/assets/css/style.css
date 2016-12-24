@@ -9,6 +9,10 @@ body {
 	text-align: center;
 }
 
+#main {
+	height: 100%;
+}
+
 #top-menu li {
 	display: inline-block;
 }

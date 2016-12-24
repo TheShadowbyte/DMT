@@ -12,7 +12,7 @@
 		public  $postType;
 
 		function __construct($session) {
-			$this->postType = $_POST['post-type'];
+			if (isset($_POST['post-type'])) { $this->postType = $_POST['post-type']; }
 			if (isset($_POST['username'])) { $this->username = $_POST['username']; }
 			if (isset($_POST['email'])) { $this->email = $_POST['email']; }
 			if (isset($_POST['password'])) {
@@ -90,6 +90,11 @@
 			return mysqli_fetch_assoc($this->database->query($sql))['password'];
 		}
 
+		public function getUsername() {
+			$sql = "SELECT username FROM users WHERE username='$this->username' LIMIT 1";
+			return mysqli_fetch_assoc($this->database->query($sql))['username'];
+		}
+
 		// Begin session for user
 		public function startSession() {
 			return $this->session->login($this->username);
@@ -98,21 +103,5 @@
 	}
 
 	$user = new User($session);
-	if ($user->postType == "register") {
-		$user->register();
-	}
-	elseif ($user->postType == "login") {
-		if ($user->login() == 1) {
-			$user->startSession();
-			echo "success";
-		}
-		else {
-			echo "failure";
-		}
-	}
-	elseif ($user->postType == "logout") {
-		$session->logout();
-		echo "success";
-	}
 
 ?>

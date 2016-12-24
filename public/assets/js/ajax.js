@@ -14,7 +14,7 @@ $(document).ready(function() {
 			if (password === passwordConfirm) {
 				$.ajax({
 					type: "POST",
-					url: "/includes/user.php",
+					url: "/includes/controller.php",
 					data: dataString,
 					cache: false,
 					success: function(result) {
@@ -43,7 +43,7 @@ $(document).ready(function() {
 		else {
 			$.ajax({
 				type: "POST",
-				url: "/includes/user.php",
+				url: "/includes/controller.php",
 				data: dataString,
 				cache: false,
 				success: function(result) {
@@ -67,7 +67,7 @@ $(document).ready(function() {
 		var dataString = 'post-type=logout';
 		$.ajax({
 			type: "POST",
-			url: "/includes/user.php",
+			url: "/includes/controller.php",
 			data: dataString,
 			cache: false,
 			success: function(result) {
