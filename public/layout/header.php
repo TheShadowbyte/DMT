@@ -1,3 +1,13 @@
+<?php
+  require_once("/includes/session.php");
+  require_once("/login.php");
+  if (!$session->isLoggedIn()) {
+    // $session->redirect("/login");
+  }
+  else {
+    // $session->redirect("/");
+  }
+?>
 <html>
   <head>
     <title>DMT System</title>
@@ -11,6 +21,7 @@
   			<li><a href="/">Home</a></li>
   			<li><a href="/login">Login</a></li>
         <li><a href="/register">Register</a></li>
+        <li><a id="logout" href="/">Logout</a></li>
   		</ul>
   	</div>
     <div id="main">

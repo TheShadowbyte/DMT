@@ -1,6 +1,7 @@
 <?php
 
 	require_once("database.php");
+	require_once("session.php");
 
 	class User {
 
@@ -11,13 +12,16 @@
 		public  $postType;
 
 		function __construct() {
-			$this->username = $_POST['username'];
-			if (isset($_POST['email'])) { $this->email = $_POST['email']; }
-			$this->password = $_POST['password'];
-			if (isset($_POST['password-confirm'])) { $this->email = $_POST['password-confirm']; }
 			$this->postType = $_POST['post-type'];
+			if (isset($_POST['username'])) { $this->username = $_POST['username']; }
+			if (isset($_POST['email'])) { $this->email = $_POST['email']; }
+			if (isset($_POST['password'])) {
+				$this->password = $_POST['password'];
+				if ($this->postType == "register") {
+					$this->encryptedPassword = $this->passwordEncrypt();
+				}
+			}
 			$this->database = new Database();
-			$this->encryptedPassword = $this->passwordEncrypt();
 		}
 
 		// Perform user registration
@@ -85,7 +89,7 @@
 		}
 
 		public function startSession() {
-
+			return $session->login($this->username);
 		}
 
 	}
@@ -96,11 +100,16 @@
 	}
 	elseif ($user->postType == "login") {
 		if ($user->login() == 1) {
+			$user->startSession();
 			echo "success";
 		}
 		else {
 			echo "failure";
 		}
+	}
+	elseif ($user->postType == "logout") {
+		$session->logout();
+		echo "success";
 	}
 
 ?>

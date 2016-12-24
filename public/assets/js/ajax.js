@@ -6,7 +6,7 @@ $(document).ready(function() {
 		var password = $("#password").val();
 		var passwordConfirm = $("#confirm-password").val();
 		// Returns successful data submission message when the entered information is received by the User class.
-		var dataString = 'username='+ username + '&email='+ email + '&password='+ password + '&password-confirm='+ passwordConfirm + '&post-type=register';
+		var dataString = 'username='+ username + '&email='+ email + '&password='+ password + '&post-type=register';
 		if (username==''||email==''||password==''||passwordConfirm=='') {
 			alert("Please fill out all required fields.");
 		}
@@ -56,6 +56,30 @@ $(document).ready(function() {
 				}
 			});
 		}
+		return false;
+	});
+});
+
+// Account logout
+$(document).ready(function() {
+	$("#logout").click(function() {
+		var dataString = 'post-type=logout';
+		$.ajax({
+			type: "POST",
+			url: "/includes/user.php",
+			data: dataString,
+			cache: false,
+			success: function(result) {
+				if (result == "success") {
+					// document.location.href="/";
+					alert("logged out");
+				}
+				else {
+					// document.location.href=window.location.href;
+					alert(result);
+				}
+			}
+		});
 		return false;
 	});
 });

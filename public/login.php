@@ -3,7 +3,12 @@
 	class Login { 
 
 		public function __construct() {
+			global $session;
 			require_once("layout/header.php");
+			// if ($session->isLoggedIn()) {
+			// 	echo "logged in";
+			// }
+			// else {
 			?>
 			<form id="login">
 			  Username:<br>
@@ -13,7 +18,8 @@
 			  <br>
 			  <input id="login-submit" type="submit" value="Login">
 			</form>
-			<?php
+			<?php		
+			// }
 			require_once("layout/footer.php");
 		}
 
