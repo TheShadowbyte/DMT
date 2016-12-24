@@ -3,7 +3,7 @@
 	class Session {
 
 		private $loggedIn = false;
-		public $userID;
+		public  $username;
 		public  $postType;
 
 		function __construct() {
@@ -11,28 +11,27 @@
 			$this->checkLogin();
 		}
 
-		// Returns true is user is logged in
+		// Returns true is user is logged in.
 		public function isLoggedIn() {
 			return $this->loggedIn;
 		}
 
-		// Verify whether user is logged in by checking the $_SESSION variable user_id,
-		// in which case the user_id value is internalized within the Session class.
+		// Check whether user is logged in.
 		private function checkLogin() {
-			if (isset($_SESSION['user_id'])) {
-				$this->userID = $_SESSION['user_id'];
+			if (isset($_SESSION['username'])) {
+				$this->username = $_SESSION['username'];
 				$this->loggedIn = true;
 			}
 			else {
-				unset($this->userID);
+				unset($this->username);
 				$this->loggedIn = false;
 			}
 		}
 
-		// Set variables to the passed user ID 
+		// Set variables for the passed user.
 		public function login($user) {
 			if ($user) {
-				$this->userID = $_SESSION['user_id'] = $user->id;
+				$this->username = $_SESSION['username'] = $user;
 				$this->loggedIn = true;
 			}
 		}
@@ -45,10 +44,10 @@
 			}
 		}
 
-		// Unset the session user ID
+		// Unset the user session
 		public function logout() {
-			unset($_SESSION['user_id']);
-			unset($this->userID);
+			unset($_SESSION['username']);
+			unset($this->username);
 			$this->loggedIn = false;
 		}
 

@@ -11,7 +11,7 @@
 		private $passwordConfirm;
 		public  $postType;
 
-		function __construct() {
+		function __construct($session) {
 			$this->postType = $_POST['post-type'];
 			if (isset($_POST['username'])) { $this->username = $_POST['username']; }
 			if (isset($_POST['email'])) { $this->email = $_POST['email']; }
@@ -22,6 +22,8 @@
 				}
 			}
 			$this->database = new Database();
+			$this->session = $session;
+
 		}
 
 		// Perform user registration
@@ -88,13 +90,14 @@
 			return mysqli_fetch_assoc($this->database->query($sql))['password'];
 		}
 
+		// Begin session for user
 		public function startSession() {
-			return $session->login($this->username);
+			return $this->session->login($this->username);
 		}
 
 	}
 
-	$user = new User();
+	$user = new User($session);
 	if ($user->postType == "register") {
 		$user->register();
 	}

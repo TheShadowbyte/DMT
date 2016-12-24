@@ -1,13 +1,4 @@
-<?php
-  require_once("/includes/session.php");
-  require_once("/login.php");
-  if (!$session->isLoggedIn()) {
-    // $session->redirect("/login");
-  }
-  else {
-    // $session->redirect("/");
-  }
-?>
+<?php require_once("/includes/session.php"); ?>
 <html>
   <head>
     <title>DMT System</title>
@@ -19,9 +10,10 @@
   	<div id="header">
   		<ul id="top-menu">
   			<li><a href="/">Home</a></li>
-  			<li><a href="/login">Login</a></li>
-        <li><a href="/register">Register</a></li>
-        <li><a id="logout" href="/">Logout</a></li>
+  			<?php if (!$session->isLoggedIn()) { ?><li><a href="/login">Login</a></li><?php } ?>
+        <?php if (!$session->isLoggedIn()) { ?><li><a href="/register">Register</a></li><?php } ?>
+        <?php if ($session->isLoggedIn()) { ?><li><a id="profile" href="/profile">Profile</a></li><?php } ?>
+        <?php if ($session->isLoggedIn()) { ?><li><a id="logout" href="/">Logout</a></li><?php } ?>
   		</ul>
   	</div>
     <div id="main">

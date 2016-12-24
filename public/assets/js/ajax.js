@@ -51,6 +51,7 @@ $(document).ready(function() {
 						document.location.href="/";
 					}
 					else {
+						// document.getElementById("login").innerHTML += result;
 						document.location.href=window.location.href;
 					}
 				}
@@ -71,12 +72,10 @@ $(document).ready(function() {
 			cache: false,
 			success: function(result) {
 				if (result == "success") {
-					// document.location.href="/";
-					alert("logged out");
+					document.location.href="/";
 				}
 				else {
-					// document.location.href=window.location.href;
-					alert(result);
+					document.location.href=window.location.href;
 				}
 			}
 		});

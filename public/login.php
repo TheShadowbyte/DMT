@@ -1,14 +1,20 @@
 <?php
 	
-	class Login { 
+	class Login {
 
 		public function __construct() {
-			global $session;
 			require_once("layout/header.php");
-			// if ($session->isLoggedIn()) {
-			// 	echo "logged in";
-			// }
-			// else {
+			if (!$session->isLoggedIn()) {
+				$this->loginForm();
+			}
+			else {
+				$session->redirect("/");
+			}
+			require_once("layout/footer.php");
+			$this->session = $session;
+		}
+
+		public function loginForm() {
 			?>
 			<form id="login">
 			  Username:<br>
@@ -18,9 +24,11 @@
 			  <br>
 			  <input id="login-submit" type="submit" value="Login">
 			</form>
-			<?php		
-			// }
-			require_once("layout/footer.php");
+			<?php
+		}
+
+		public function loggedIn() {
+			
 		}
 
 	}
