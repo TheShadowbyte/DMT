@@ -24,6 +24,7 @@
 			foreach ($this->uri as $key => $value) {
 				if (preg_match("#^$value$#", $getURIParameters)) {
 					$useMethod = $this->method[$key];
+					// require_once($useMethod . ".php");
 					new $useMethod();
 					$match = 1;
 					break;

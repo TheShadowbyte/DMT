@@ -1,4 +1,4 @@
-<?php require_once("/includes/session.php"); ?>
+<?php require_once(__DIR__ . "/../includes/session.php"); ?>
 <html>
   <head>
     <title>DMT System</title>

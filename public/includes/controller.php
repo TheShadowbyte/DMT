@@ -1,15 +1,15 @@
 <?php
 
-	require_once("user.php");
+	require_once("../register.php");
+	require_once("../login.php");
+	require_once("session.php");
 
-	// Maybe bring below contents back to user.php
-
-	if ($user->postType == "register") {
-		$user->register();
+	if ($register->postType == "register") {
+		$register->registerUser();
 	}
-	elseif ($user->postType == "login") {
-		if ($user->login() == 1) {
-			$user->startSession();
+	elseif ($login->postType == "login") {
+		if ($login->login() == 1) {
+			$login->startSession();
 			echo "success";
 		}
 		else {

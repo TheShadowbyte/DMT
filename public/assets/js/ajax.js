@@ -51,7 +51,6 @@ $(document).ready(function() {
 						document.location.href="/";
 					}
 					else {
-						// document.getElementById("login").innerHTML += result;
 						document.location.href=window.location.href;
 					}
 				}
