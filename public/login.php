@@ -12,10 +12,10 @@
 			// What to do if AJAX requesting login
 			if (isset($_POST['post-type']) == "login") {
 				if (isset($_POST['username'])) { 
-					$this->username = $_POST['username']; 
+					$this->username = mysqli_real_escape_string($_POST['username']); 
 				}
 				if (isset($_POST['password'])) { 
-					$this->password = $_POST['password']; 
+					$this->password = mysqli_real_escape_string($_POST['password']); 
 				}
 				$this->verifyLogin();
 			}

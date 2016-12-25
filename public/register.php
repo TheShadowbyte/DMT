@@ -12,11 +12,11 @@
 		public  $postType;
 
 		public function __construct() {
-			if (isset($_POST['post-type'])) { $this->postType = $_POST['post-type']; }
-			if (isset($_POST['username'])) { $this->username = $_POST['username']; }
-			if (isset($_POST['email'])) { $this->email = $_POST['email']; }
+			if (isset($_POST['post-type'])) { $this->postType = mysqli_real_escape_string($_POST['post-type']); }
+			if (isset($_POST['username'])) { $this->username = mysqli_real_escape_string($_POST['username']); }
+			if (isset($_POST['email'])) { $this->email = mysqli_real_escape_string($_POST['email']); }
 			if (isset($_POST['password'])) {
-				$this->password = $_POST['password'];
+				$this->password = mysqli_real_escape_string($_POST['password']);
 				if ($this->postType == "register") {
 					$this->encryptedPassword = $this->passwordEncrypt();
 				}

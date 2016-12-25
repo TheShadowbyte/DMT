@@ -98,12 +98,11 @@ $(document).ready(function() {
 				cache: false,
 				success: function(result) {
 					if (result == "success") {
-						alert('ok');
 						document.location.href=window.location.href;
 					}
 					else {
-						alert(result);
-						// document.location.href=window.location.href;
+						alert("That email address cannot be used.");
+						document.location.href=window.location.href;
 					}
 				}
 			});

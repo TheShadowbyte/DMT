@@ -5,18 +5,16 @@
 
 	class User {
 
-		private $username;
+		public $username;
 		private $email;
 
 		function __construct() {
 			$this->session = $_SESSION['session_data'];
 			$this->username = $this->session->username;
 			$this->database = new Database();
-			if (isset($_POST['post-type']) == "change-email") {
-				if (isset($_POST['email'])) {
-					$this->email = $_POST['email'];
-				}
-				if ($this->changeEmail()) {
+			if (isset($_POST['post-type']) && $_POST['post-type'] == "change-email" && isset($_POST['email'])) {
+				$this->email = mysqli_real_escape_string($_POST['email']);
+				if ($this->changeEmail() == true) {
 					echo "success";
 				}
 				else {
@@ -39,7 +37,7 @@
 		// Change the user email
 		public function changeEmail() {
 			if ($this->checkExistingEmail() == false) {
-				$sql = "UPDATE users SET email='$this->email' WHERE user='$this->username'";
+				$sql = "UPDATE users SET email='$this->email' WHERE username='$this->username'";
 				$this->database->query($sql);
 				return true;
 			}

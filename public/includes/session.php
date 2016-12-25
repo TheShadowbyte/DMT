@@ -10,7 +10,7 @@
 			session_start();
 			$this->checkLogin();
 			// What to do when AJAX requests logout
-			if (isset($_POST['post-type']) == "logout") {
+			if (isset($_POST['post-type']) && $_POST['post-type'] == "logout") {
 				$this->logout();
 			}
 		}
