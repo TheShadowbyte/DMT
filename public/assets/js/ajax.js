@@ -43,7 +43,37 @@ $(document).ready(function() {
 		else {
 			$.ajax({
 				type: "POST",
-				url: "/login.php",
+				url: "/includes/class-login.php",
+				data: dataString,
+				cache: false,
+				success: function(result) {
+					if (result == "success") {
+						document.location.href="/profile";
+					}
+					else {
+						document.location.href=window.location.href;
+					}
+				}
+			});
+		}
+		return false;
+	});
+});
+
+// Admin login
+$(document).ready(function() {
+	$("#admin-login-submit").click(function() {
+		var username = $("#username").val();
+		var password = $("#password").val();
+		// Returns successful data submission message when the entered information is received by the User class.
+		var dataString = 'username='+ username + '&password='+ password + '&post-type=login';
+		if (username==''||password=='') {
+			alert("Please fill out all required fields.");
+		}
+		else {
+			$.ajax({
+				type: "POST",
+				url: "/admin/includes/class-login-admin.php",
 				data: dataString,
 				cache: false,
 				success: function(result) {

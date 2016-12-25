@@ -1,10 +1,20 @@
 <?php
 
-	class LoginAdmin {
+	require_once("/../../includes/database.php");
+	require_once("/../../includes/session.php");
+	require_once("class-login-admin.php");
+	
+	class LoginAdminView {
 
 		public function __construct() {
+			require_once("/../layout/admin-header.php");
 			// Note to self: check if a login session already exists from front-end
 			echo "<h2>Admin Login</h2>";
+			$this->adminLoginForm();
+			require_once("/../layout/admin-footer.php");
+		}
+
+		private function adminLoginForm() {
 			?>
 			<form id="login">
 			  Username:<br>
@@ -19,6 +29,6 @@
 
 	}
 
-	$adminLogin = new LoginAdmin();
+	$adminLoginView = new LoginAdminView();
 
 ?>
