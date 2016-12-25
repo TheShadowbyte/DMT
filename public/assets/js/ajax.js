@@ -48,7 +48,7 @@ $(document).ready(function() {
 				cache: false,
 				success: function(result) {
 					if (result == "success") {
-						document.location.href="/";
+						document.location.href="/profile";
 					}
 					else {
 						document.location.href=window.location.href;

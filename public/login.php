@@ -2,7 +2,6 @@
 
 	require_once("includes/database.php");
 	require_once("includes/session.php");
-	require_once("layout/header.php");
 	
 	class Login {
 
@@ -12,17 +11,29 @@
 			// What to do if AJAX requesting login
 			if (isset($_POST['post-type']) == "login") {
 				if (isset($_POST['username'])) { 
-					$this->username = mysqli_real_escape_string($_POST['username']); 
+					$this->username = mysqli_real_escape_string($this->database->openConnection(), $_POST['username']); 
 				}
 				if (isset($_POST['password'])) { 
-					$this->password = mysqli_real_escape_string($_POST['password']); 
+					$this->password = mysqli_real_escape_string($this->database->openConnection(), $_POST['password']);
 				}
 				$this->verifyLogin();
 			}
 			// What to do during normal page view
 			else {
-				$this->loginForm();
+				// Note to self: check if username is a real user, as well as authenticated
+				if (isset($this->session->username)) {
+					$this->session->redirect("/");
+				}
+				else {
+					$this->loginPage();
+				}
 			}
+		}
+
+		public function loginPage() {
+			require_once("layout/header.php");
+			$this->loginForm();
+			require_once("layout/footer.php");
 		}
 
 		// The HTML login form
@@ -51,14 +62,14 @@
 		}
 
 		// Get the hashed password from the database to compare with login attempt
-		private function getPassword() {
-			$sql = "SELECT password FROM users WHERE username='$this->username' LIMIT 1";
+		private function getPassword($username) {
+			$sql = "SELECT password FROM users WHERE username='$username' LIMIT 1";
 			return mysqli_fetch_assoc($this->database->query($sql))['password'];
 		}
 
 		// User login authentication
 		public function checkPassword() {
-			if (crypt($this->password, $this->getPassword()) == $this->getPassword()) {
+			if (crypt($this->password, $this->getPassword($this->username)) == $this->getPassword($this->username)) {
 				return true;
 			}
 			else {
@@ -74,7 +85,5 @@
 	}
 
 	$login = new Login();
-
-	require_once("layout/footer.php");
 
 ?>

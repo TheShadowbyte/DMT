@@ -1,7 +1,7 @@
 <?php require_once("/../includes/session.php"); ?>
 <html>
   <head>
-    <title>DMT System</title>
+    <title>DMT Admin</title>
     <link href="assets/css/style.css" media="all" rel="stylesheet" type="text/css" />
     <script src="../assets/js/jquery-3.1.1.js"></script>
     <script src="../assets/js/ajax.js"></script>

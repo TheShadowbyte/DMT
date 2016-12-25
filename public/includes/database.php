@@ -19,6 +19,9 @@
 			       " (" . mysqli_connect_errno() . ")"
 			  );
 			}
+			else {
+				return $this->connection;
+			}
 		}
 
 		// Close connection to the database
