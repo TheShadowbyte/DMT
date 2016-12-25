@@ -34,7 +34,7 @@
 			  Email:
 			  <input id="email" type="text" name="email" value="<?php echo $this->user->getEmail(); ?>"><br>
 			  <br>
-			  <input id="update-submit" type="submit" value="Update">
+			  <input id="change-email-submit" type="submit" value="Update">
 			</form>
 			<?php
 		}

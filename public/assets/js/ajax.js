@@ -14,7 +14,7 @@ $(document).ready(function() {
 			if (password === passwordConfirm) {
 				$.ajax({
 					type: "POST",
-					url: "/includes/controller.php",
+					url: "/register.php",
 					data: dataString,
 					cache: false,
 					success: function(result) {
@@ -43,7 +43,7 @@ $(document).ready(function() {
 		else {
 			$.ajax({
 				type: "POST",
-				url: "/includes/controller.php",
+				url: "/login.php",
 				data: dataString,
 				cache: false,
 				success: function(result) {
@@ -66,7 +66,7 @@ $(document).ready(function() {
 		var dataString = 'post-type=logout';
 		$.ajax({
 			type: "POST",
-			url: "/includes/controller.php",
+			url: "/includes/session.php",
 			data: dataString,
 			cache: false,
 			success: function(result) {
@@ -78,6 +78,36 @@ $(document).ready(function() {
 				}
 			}
 		});
+		return false;
+	});
+});
+
+// Change Email
+$(document).ready(function() {
+	$("#change-email-submit").click(function() {
+		var email = $("#email").val();
+		var dataString = 'email='+ email + '&post-type=change-email';
+		if (email=='') {
+			alert("You cannot leave the email field blank.");
+		}
+		else {
+			$.ajax({
+				type: "POST",
+				url: "/includes/user.php",
+				data: dataString,
+				cache: false,
+				success: function(result) {
+					if (result == "success") {
+						alert('ok');
+						document.location.href=window.location.href;
+					}
+					else {
+						alert(result);
+						// document.location.href=window.location.href;
+					}
+				}
+			});
+		}
 		return false;
 	});
 });

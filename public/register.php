@@ -101,4 +101,8 @@
 
 	require_once("layout/footer.php");
 
+	if ($register->postType == "register") {
+		$register->registerUser();
+	}
+
 ?>
