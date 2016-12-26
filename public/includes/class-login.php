@@ -10,13 +10,12 @@
 			$this->session = $_SESSION['session_data'];
 			$this->database = new Database();
 			// What to do if login is requested.
-			if (isset($_POST['post-type']) == "login") {
+			if (Format::checkPostType("login") || Format::checkPostType("admin-login")) {
 				$this->username = Format::cleanStrings($this->database->openConnection(), $_POST['username']);
 				$this->password = Format::cleanStrings($this->database->openConnection(), $_POST['password']);
-				$this->verifyLogin();
-			}
-			else {
-				$this->session->redirect("/");
+				if (Format::checkPostType("login")) {
+					$this->verifyLogin();
+				}
 			}
 		}
 
@@ -32,13 +31,13 @@
 		}
 
 		// Get the hashed password from the database to compare with login attempt.
-		protected function getPassword($username) {
+		private function getPassword($username) {
 			$sql = "SELECT password FROM users WHERE username='$username' LIMIT 1";
 			return mysqli_fetch_assoc($this->database->query($sql))['password'];
 		}
 
 		// User login authentication.
-		protected function checkPassword() {
+		private function checkPassword() {
 			if (crypt($this->password, $this->getPassword($this->username)) == $this->getPassword($this->username)) {
 				return true;
 			}
@@ -48,7 +47,7 @@
 		}
 
 		// Begin session for user.
-		protected function loginUser() {
+		private function loginUser() {
 			return $this->session->login($this->username);
 		}
 

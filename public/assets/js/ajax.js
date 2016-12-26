@@ -43,14 +43,17 @@ $(document).ready(function() {
 		else {
 			$.ajax({
 				type: "POST",
-				url: "/includes/class-login.php",
+				// url: "/includes/class-login.php",
+				url: "/includes/controller.php",
 				data: dataString,
 				cache: false,
 				success: function(result) {
 					if (result == "success") {
+						alert(result);
 						document.location.href="/profile";
 					}
 					else {
+						alert(result);
 						document.location.href=window.location.href;
 					}
 				}
@@ -66,19 +69,20 @@ $(document).ready(function() {
 		var username = $("#username").val();
 		var password = $("#password").val();
 		// Returns successful data submission message when the entered information is received by the User class.
-		var dataString = 'username='+ username + '&password='+ password + '&post-type=login';
+		var dataString = 'username='+ username + '&password='+ password + '&post-type=admin-login';
 		if (username==''||password=='') {
 			alert("Please fill out all required fields.");
 		}
 		else {
 			$.ajax({
 				type: "POST",
-				url: "/admin/includes/class-login-admin.php",
+				// url: "/admin/includes/class-login-admin.php",
+				url: "/includes/controller.php",
 				data: dataString,
 				cache: false,
 				success: function(result) {
 					if (result == "success") {
-						document.location.href="/profile";
+						document.location.href="/admin/";
 					}
 					else {
 						document.location.href=window.location.href;
