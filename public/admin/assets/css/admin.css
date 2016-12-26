@@ -1,7 +1,7 @@
 body {
 	margin: 0;
 }
-#header {
+#header, #footer {
 	background: #ef7c7c;
 	color: white;
 	font-size: 1.2em;

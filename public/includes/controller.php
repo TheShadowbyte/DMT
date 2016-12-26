@@ -10,5 +10,9 @@
 		require_once("../admin/includes/class-login-admin.php");
 		$loginAdmin = new LoginAdmin($_POST['username'], $_POST['password']);
 	}
+	elseif (Format::checkPostType("logout")) {
+		require_once("session.php");
+		$loginAdmin = new Session();
+	}
 
 ?>

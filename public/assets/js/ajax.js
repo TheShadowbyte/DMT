@@ -100,7 +100,8 @@ $(document).ready(function() {
 		var dataString = 'post-type=logout';
 		$.ajax({
 			type: "POST",
-			url: "/includes/session.php",
+			// url: "/includes/session.php",
+			url: "/includes/controller.php",
 			data: dataString,
 			cache: false,
 			success: function(result) {

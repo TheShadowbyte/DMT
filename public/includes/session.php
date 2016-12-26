@@ -1,5 +1,7 @@
 <?php
 
+	require_once("format.php");
+
 	class Session {
 
 		private $loggedIn = false;
@@ -10,7 +12,7 @@
 			session_start();
 			$this->checkLogin();
 			// What to do when AJAX requests logout
-			if (isset($_POST['post-type']) && $_POST['post-type'] == "logout") {
+			if (Format::checkPostType("logout")) {
 				$this->logout();
 			}
 		}

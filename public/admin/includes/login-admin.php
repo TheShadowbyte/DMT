@@ -7,14 +7,19 @@
 	class LoginAdminView {
 
 		public function __construct() {
-			require_once("/../layout/admin-header.php");
 			// Note to self: check if a login session already exists from front-end
 			// and whether that session contains an admin user.
-			echo "<h2>Admin Login</h2>";
-			$this->adminLoginForm();
-			require_once("/../layout/admin-footer.php");
+			$this->session = $_SESSION['session_data'];
+			if (!$this->session->isLoggedIn()) {
+				require_once("/../layout/admin-header.php");
+				echo "<h2>Admin Login</h2>";
+				$this->adminLoginForm();
+				require_once("/../layout/admin-footer.php");
+			}
+				
 		}
 
+		// Note to self: make Layout and AdminLayout classes
 		private function adminLoginForm() {
 			?>
 			<form id="login">

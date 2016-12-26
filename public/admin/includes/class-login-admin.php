@@ -1,8 +1,8 @@
 <?php
 
-	require_once("/../../includes/database.php");
+	// require_once("/../../includes/database.php");
 	require_once("/../../includes/format.php");
-	require_once("/../../includes/session.php");
+	// require_once("/../../includes/session.php");
 	require_once("/../../includes/class-login.php");
 	
 	class LoginAdmin extends Login {
