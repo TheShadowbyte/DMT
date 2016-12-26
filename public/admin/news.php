@@ -7,10 +7,11 @@
 		public function __construct() {
 			$this->user = $_SESSION['user_data'];
 			require_once("layout/admin-header.php");
-			$this->editNews();
+			echo "<h1>News</h1>";
 			?>
 			<a href="news-edit.php">Create New Post</a>
 			<?php
+			$this->editNews();
 			require_once("layout/admin-footer.php");
 		}
 

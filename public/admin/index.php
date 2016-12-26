@@ -29,7 +29,6 @@
 		private function adminStructure() {
 			require_once("layout/admin-header.php");
 			echo "Logged in as " . $this->session->username . "<br />";
-			echo "<h1>Edit News</h1>";
 			?>
 			<a href="news.php">News</a>
 			<a href="users.php">Users</a>
