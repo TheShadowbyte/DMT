@@ -43,7 +43,6 @@ $(document).ready(function() {
 		else {
 			$.ajax({
 				type: "POST",
-				// url: "/includes/class-login.php",
 				url: "/includes/controller.php",
 				data: dataString,
 				cache: false,
@@ -76,7 +75,6 @@ $(document).ready(function() {
 		else {
 			$.ajax({
 				type: "POST",
-				// url: "/admin/includes/class-login-admin.php",
 				url: "/includes/controller.php",
 				data: dataString,
 				cache: false,
@@ -85,6 +83,8 @@ $(document).ready(function() {
 						document.location.href="/admin/";
 					}
 					else {
+						alert(result);
+						// document.getElementById("main").innerHTML += result;
 						document.location.href=window.location.href;
 					}
 				}

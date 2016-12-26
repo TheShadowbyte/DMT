@@ -9,6 +9,7 @@
 		public function __construct() {
 			require_once("/../layout/admin-header.php");
 			// Note to self: check if a login session already exists from front-end
+			// and whether that session contains an admin user.
 			echo "<h2>Admin Login</h2>";
 			$this->adminLoginForm();
 			require_once("/../layout/admin-footer.php");

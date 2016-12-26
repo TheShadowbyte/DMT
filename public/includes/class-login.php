@@ -6,13 +6,15 @@
 	
 	class Login {
 
-		public function __construct() {
+		protected $username;
+		protected $database;
+
+		public function __construct($username, $password) {
 			$this->session = $_SESSION['session_data'];
 			$this->database = new Database();
-			// What to do if login is requested.
 			if (Format::checkPostType("login") || Format::checkPostType("admin-login")) {
-				$this->username = Format::cleanStrings($this->database->openConnection(), $_POST['username']);
-				$this->password = Format::cleanStrings($this->database->openConnection(), $_POST['password']);
+				$this->username = Format::cleanStrings($this->database->openConnection(), $username);
+				$this->password = Format::cleanStrings($this->database->openConnection(), $password);
 				if (Format::checkPostType("login")) {
 					$this->verifyLogin();
 				}
