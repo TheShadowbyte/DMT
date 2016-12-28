@@ -46,11 +46,9 @@ $(document).ready(function() {
 				cache: false,
 				success: function(result) {
 					if (result == "success") {
-						alert(result);
 						document.location.href="/profile";
 					}
 					else {
-						alert(result);
 						document.location.href=window.location.href;
 					}
 				}
@@ -80,8 +78,7 @@ $(document).ready(function() {
 						document.location.href="/admin/";
 					}
 					else {
-						alert(result);
-						document.location.href=window.location.href;
+						document.location.href="/";
 					}
 				}
 			});

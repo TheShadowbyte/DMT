@@ -8,6 +8,7 @@
 
 		protected $username;
 		protected $database;
+		protected $session;
 
 		public function __construct($username, $password) {
 			$this->session = $_SESSION['session_data'];

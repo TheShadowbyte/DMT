@@ -3,10 +3,10 @@
 	require_once("/../includes/database.php");
 	require_once("/../includes/session.php");
 	require_once("/../includes/user.php");
-	require_once("includes/class-login-admin.php");
+	require_once("includes/class.login-admin.php");
 
-	// This class is a model for the admin backend
-	class Admin {
+	// This class is a view for the admin backend
+	class AdminView {
 
 		public function __construct() {
 			$this->session = $_SESSION['session_data'];
@@ -38,6 +38,6 @@
 
 	}
 
-	$admin = new Admin();
+	$admin = new AdminView();
 
 ?>

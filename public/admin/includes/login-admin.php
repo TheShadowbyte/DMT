@@ -2,7 +2,7 @@
 
 	require_once("/../../includes/database.php");
 	require_once("/../../includes/session.php");
-	require_once("class-login-admin.php");
+	require_once("class.login-admin.php");
 	
 	class LoginAdminView {
 
@@ -16,7 +16,6 @@
 				$this->adminLoginForm();
 				require_once("/../layout/admin-footer.php");
 			}
-				
 		}
 
 		// Note to self: make Layout and AdminLayout classes

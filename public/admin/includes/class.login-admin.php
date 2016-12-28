@@ -12,14 +12,11 @@
 				if ($this->isAdmin($this->username)) {
 					$this->verifyLogin();
 				}
-				else {
-					echo "You are not an administrator";
-				}
 			}
 		}
 
 		// Check if user is an administrator for admin login.
-		private function isAdmin($username) {
+		public function isAdmin($username) {
 			$sql = "SELECT user_type FROM users WHERE username='$username' LIMIT 1";
 			$userType = mysqli_fetch_assoc($this->database->query($sql))['user_type'];
 			if ($userType == "administrator") {

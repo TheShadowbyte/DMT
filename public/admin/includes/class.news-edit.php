@@ -4,7 +4,7 @@
 	require_once("/../../includes/format.php");
 	require_once("class.news-edit-view.php");
 
-	// This class allows admins to condone CRUD on news posts.
+	// This class is the model to allow admins to condone CRUD on news posts.
 	class AdminNewsEdit {
 
 		private $database;
@@ -14,8 +14,7 @@
 
 		public function __construct() {
 			$this->database = new Database();
-			if (isset($_POST['post-type'])) { $this->determinePostType($_POST['post-type']); }
-			else { new AdminNewsEditView(); }
+			$this->determinePostType($_POST['post-type']);
 			$this->database->closeConnection();
 		}
 
@@ -40,7 +39,7 @@
 		private function createPost($postTitle, $postContent) {
 			$sql = "INSERT INTO news (title, content) VALUES ('$postTitle', '$postContent')";
 			$this->database->query($sql);
-			// Get the post ID of this newly-created post
+			// Get the ID of this newly-created post
 			$sqlNewID = "SELECT id FROM news ORDER BY id DESC LIMIT 1";
 			$newPostID = mysqli_fetch_assoc($this->database->query($sqlNewID))['id'];
 			echo $newPostID;
