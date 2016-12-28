@@ -1,11 +1,11 @@
 <?php
 
-	require_once("/../includes/user.php");
+	require_once("/../includes/database.php");
 
 	class AdminNews {
 
 		public function __construct() {
-			$this->user = $_SESSION['user_data'];
+			$this->database = new Database();
 			require_once("layout/admin-header.php");
 			echo "<h1>News</h1>";
 			?>
@@ -18,7 +18,7 @@
 		// This loops through all the news in order to edit them.
 		private function newsList() {
 			$sql = "SELECT * FROM news";
-			$query = $this->user->database->query($sql);
+			$query = $this->database->query($sql);
 			?>
 			<table>
 				<tr>
