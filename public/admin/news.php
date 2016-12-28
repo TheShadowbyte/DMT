@@ -4,6 +4,8 @@
 
 	class AdminNews {
 
+		private $database;
+
 		public function __construct() {
 			$this->database = new Database();
 			require_once("layout/admin-header.php");

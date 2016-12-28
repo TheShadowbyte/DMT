@@ -54,7 +54,7 @@ $(document).ready(function() {
 
 // Delete Post
 $(document).ready(function() {
-	$(".delete-post").click(function() {
+	$("#delete-post").click(function() {
 		var postID = $("#post-id").val();
 		var dataString = 'post-id='+ postID + '&post-type=delete-post';
 		$.ajax({
