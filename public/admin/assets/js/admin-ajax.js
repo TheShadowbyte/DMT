@@ -52,7 +52,7 @@ $(document).ready(function() {
 	});
 });
 
-// Edit Post
+// Delete Post
 $(document).ready(function() {
 	$(".delete-post").click(function() {
 		var postID = $("#post-id").val();
@@ -66,6 +66,32 @@ $(document).ready(function() {
 				document.location.href="news.php";
 			}
 		});
+		return false;
+	});
+});
+
+// Edit User
+$(document).ready(function() {
+	$("#edit-user").click(function() {
+		var userID = $("#user-id").val();
+		var username = $("#username").val();
+		var email = $("#email").val();
+		var dataString = 'user-id='+ userID + '&username='+ username + '&email='+ email + '&post-type=edit-user';
+		if (username==''||email=='') {
+			alert("Please fill out all required fields.");
+		}
+		else {
+			$.ajax({
+				type: "POST",
+				url: "/admin/user-edit.php",
+				data: dataString,
+				cache: false,
+				success: function(result) {
+					alert(result);
+					document.location.href=window.location.href;
+				}
+			});
+		}
 		return false;
 	});
 });

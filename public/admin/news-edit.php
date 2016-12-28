@@ -30,9 +30,13 @@
 	}
 	else {
 		require_once("layout/admin-header.php");
+		?>
+		<a href="news.php">Back to Posts</a>
+		<?php
 		if (empty($_GET['post'])) {
-			?>
-			<a href="news.php">Back to Posts</a>
+		?>
+			
+			
 			<h1>Create New Post</h1>
 			<input id="post-title" type="text" name="post-title" /><br /><br />
 			<textarea id="post-content" name="post-content" rows="4" cols="40"></textarea><br /><br />
@@ -42,7 +46,6 @@
 		else {
 			$getPostID = $_GET['post'];
 			?>
-			<a href="news.php">Back to Posts</a>
 			<h1>Edit Post</h1>
 			<?php
 			$sql = "SELECT * FROM news WHERE id='$getPostID' LIMIT 1";

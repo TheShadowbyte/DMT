@@ -11,12 +11,12 @@
 			?>
 			<a href="news-edit.php">Create New Post</a>
 			<?php
-			$this->editNews();
+			$this->newsList();
 			require_once("layout/admin-footer.php");
 		}
 
 		// This loops through all the news in order to edit them.
-		private function editNews() {
+		private function newsList() {
 			$sql = "SELECT * FROM news";
 			$query = $this->user->database->query($sql);
 			?>
