@@ -32,6 +32,7 @@
 			?>
 			<a href="news.php">News</a>
 			<a href="users.php">Users</a>
+			<a href="settings.php">General Settings</a>
 			<?php
 			require_once("layout/admin-footer.php");
 		}

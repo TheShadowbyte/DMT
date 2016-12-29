@@ -2,7 +2,7 @@
 
 	require_once("/../includes/database.php");
 
-	class AdminNews {
+	class AdminNewsList {
 
 		private $database;
 
@@ -43,6 +43,6 @@
 
 	}
 
-	$news = new AdminNews();
+	$news = new AdminNewsList();
 
 ?>

@@ -134,3 +134,27 @@ $(document).ready(function() {
 		return false;
 	});
 });
+
+// Update Settings
+$(document).ready(function() {
+	$("#update-settings").click(function() {
+		var siteName = $("#site-name").val();
+		var adminEmail = $("#admin-email").val();
+		var dataString = 'site-name='+ siteName + '&admin-email='+ adminEmail + '&post-type=update-settings';
+		if (siteName==''||adminEmail=='') {
+			alert("Please fill out all required fields.");
+		}
+		else {
+			$.ajax({
+				type: "POST",
+				url: "/admin/settings.php",
+				data: dataString,
+				cache: false,
+				success: function(result) {
+					document.location.href=window.location.href;
+				}
+			});
+		}
+		return false;
+	});
+});
